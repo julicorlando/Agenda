@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');      
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    object-fit: cover;
+    font-family: "Roboto", sans-serif;
+    color: #F5DEB3;
+    object-fit: cover;
+}
+
+body {
+    background: radial-gradient(circle, #FAF0E6, #F5DEB3, #D2B48C);
+    overflow: hidden;
+}
+
+.container {
+    margin: 80px auto;
+    width: 920px;
+    height: 720px;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    background-color: #D2B48C;
+    border-radius: 30px;
+    border: 3px solid rgb(138, 113, 80, 0.3);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    animation: .5s fadeDownAnimation;
+}
+
+.lista-contatos {
+    margin-left: 0;
+    max-width: 650px;
+    max-height: 710px;
+    width: 100%;
+    border-right: 3px solid rgb(138, 113, 80, 0.3);
+    animation: 1s fadeDownAnimation;
+    overflow-y: auto;
+    /* todo Adicionando scrollbar para firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #8a7150 #F5DEB3;
+}
+
+.lista-contatos h1 {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    color: #8a7150;
+    border-bottom: 3px solid rgb(138, 113, 80, 0.3);
+}
+
+.lista-contatos table thead tr,
+.lista-contatos table tbody tr {
+    vertical-align: top;
+}
+
+.lista-contatos table thead tr th,
+.lista-contatos table tbody tr td {
+    padding: 12px;
+    color: #8a7150;
+    border-bottom: 1px solid rgb(245, 222, 179,0.4);
+}
+
+.lista-contatos table tbody tr td{
+    color: #8b714f;
+    font-weight: bold;
+}
+
+table {
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+tbody thead td tr{
+    padding: 10px;
+}
+
+.adicionar-contatos {
+    display: flex;
+    flex-direction: column;
+    background: #F5DEB3;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    animation: 1s fadeDownAnimation;
+}
+
+.adicionar-contatos header{
+    margin-bottom: 50px;
+    width: 100%;
+    padding-bottom: 250px;
+    border-bottom: 3px solid rgb(138, 113, 80, 0.3);
+}
+
+.adicionar-contatos button{
+    margin-left: 36px;
+    padding: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    background: #D2B48C;
+    color: #8b714f;
+    opacity: 0;
+    transition: background 0.5s;
+    animation: FadeRightAnimation .5s forwards;
+    animation-delay: .5s;
+}
+
+.adicionar-contatos button i{
+    font-size: 20px;
+    color: #8b714f;
+    margin-right: 2px;
+    transition: all 0.5s;
+}
+
+.adicionar-contatos button:hover{
+    background: #F5DEB3;
+}
+
+.adicionar-contatos header h1{
+    text-align: center;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    border-top-right-radius: 30px;
+    color: #8a7150;
+    font-weight: bolder;
+}
+
+.adicionar-contatos .foot{
+    border-radius: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.adicionar-contatos p{
+    margin-top: 60px;
+    padding: 5px;
+    color: #8a7150;
+    font-weight: bold;
+}
+
+.popup-container{
+    position: absolute;
+    top: 30%;
+    left: 68%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.popup-container.active{
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    pointer-events: auto;
+}
+
+.popup-container .popup-box{
+    width: 500px;
+    background: #F5DEB3;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transform: scale(0);
+}
+
+.popup-container.active .popup-box{
+    transform: scale(1);
+    transition: all 0.5s;
+    transition-delay: 0.25;
+}
+
+.popup-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.popup-box h1{
+    border-bottom: 3px solid rgb(138, 113, 80, 0.3);
+    margin-top: -60px;
+}
+
+.popup-box form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+}
+
+.popup-box form input{
+    width: 300px;
+    padding: 8px;
+    border-radius: 12px;
+    border: 3px solid rgb(138, 113, 80, 0.7);
+    color: #8a7150;
+    font-weight: bold;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.5s;
+}
+
+.popup-box form input:hover {
+    background-color: #F5DEB3;
+}
+
+.popup-box form label{
+    padding: 6px;
+}
+
+.popup-box form label{
+    color: #8a7150;
+}
+
+.popup-box button{
+    margin-right: 40px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.popup-box .closebtn{
+    margin-right: -350px;
+    z-index: 2;
+}
+
+/* todo Estilizando a barra de rolagem */
+.lista-contatos::-webkit-scrollbar {
+    width: 12px;
+}
+
+.lista-contatos::-webkit-scrollbar-thumb {
+    background-color: #8a7150;
+    border-radius: 10px;
+    border: 3px solid #F5DEB3;
+}
+
+.lista-contatos::-webkit-scrollbar-track {
+    background-color: #F5DEB3;
+    border-radius: 10px;
+}
+
+@keyframes fadeDownAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes FadeRightAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 648px) {
+    body {
+        background: radial-gradient(circle, #FAF0E6, #F5DEB3, #D2B48C);
+        overflow: auto;
+        /* Permitir o scroll */
+    }
+
+    .container {
+        width: 90%;
+        height: auto;
+        margin: 20px auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .lista-contatos {
+        max-width: 100%;
+        margin: 0;
+        border-right: none;
+        border-bottom: 3px solid rgb(138, 113, 80, 0.3);
+    }
+
+    .lista-contatos h1 {
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .adicionar-contatos {
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 20px;
+    }
+
+    .adicionar-contatos header {
+        height: 50px;
+        padding-bottom: 150px;
+    }
+
+    .adicionar-contatos p {
+        margin-bottom: 10px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    .adicionar-contatos .foot {
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .adicionar-contatos header h1 {
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    .adicionar-contatos button {
+        font-size: 14px;
+        padding: 10px;
+        margin-left: 95px;
+    }
+
+    .popup-box {
+        width: 80%;
+    }
+
+    .popup-box form input {
+        width: 90%;
+        padding: 6px;
+    }
+
+    .popup-box form label {
+        font-size: 14px;
+    }
+
+    .popup-box button {
+        font-size: 14px;
+        margin-right: 95px;
+    }
+
+    .popup-box .closebtn{
+        margin-right: -230px;
+        margin-bottom: 20px;
+    }
+
+    .popup-box h1{
+        margin-bottom: 105px;
+    }
+
+    .popup-container {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .popup-container .popup-box {
+        width: 400px;
+    }
+}
